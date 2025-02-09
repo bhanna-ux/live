@@ -1,7 +1,7 @@
 import streamlit as st
 import subprocess
 import ffmpeg
-import numpy as np
+
 import soundfile as sf
 import librosa
 import time
@@ -12,11 +12,7 @@ import signal
 from streamlink import Streamlink
 import whisper
 import itertools
-import multiprocessing
-from multiprocessing import Process
-from subprocess import Popen, PIPE
 
-from threading import Event
 import datetime
 
 
