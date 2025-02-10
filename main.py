@@ -33,13 +33,12 @@ def stream_to_url(url, quality='best'):
         #self.ffmpeg_process = None
 d=[]
 def oneFunction():
-
-
+    os.makedirs('temp', exist_ok=True)
     stream_url = stream_to_url(url)
     fmpeg_process = (ffmpeg
 .input(stream_url)
 .audio
-.output('/kaggle/working/recording.wav')
+.output('temp/recording.wav')
 .overwrite_output()
 .run_async())
     st.write(":red[RECORDING Audio ....]",height=30)
@@ -47,7 +46,7 @@ def oneFunction():
 
         fmpeg_process.send_signal(signal.SIGQUIT)
         st.write(':red[Recording FINISHED ..... ]',height=30)
-        st.audio('/kaggle/working/recording.wav')
+        st.audio('temp/recording.wav')
         st.text_area(label=' Transcript : ', value= d ,height=200)
 
     st.sidebar.button("Finish Recording ",on_click=Finish)
@@ -65,11 +64,11 @@ def done():
 
 
     for i in itertools.count():
-        audio_array, sr = librosa.load("/kaggle/working/recording.wav", sr=16_000)
+        audio_array, sr = librosa.load("temp/recording.wav", sr=16_000)
         timeinterval=len(audio_array)/sr
         t=audio_array[int(lasttimeinterval)*sr : int(timeinterval)*sr]
-        sf.write("/kaggle/working/split_interval.wav", t, sr)
-        result=model.transcribe("/kaggle/working/split_interval.wav" )
+        sf.write("temp/split_interval.wav", t, sr)
+        result=model.transcribe("temp/split_interval.wav" )
         if result['text']:
 
             #translated = GoogleTranslator(source='auto', target='en').translate(result['text'])
