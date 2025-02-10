@@ -37,13 +37,13 @@ d=[]
 def audiocli():
     os.makedirs('temp', exist_ok=True)
     process= subprocess.Popen( ["streamlink" , url ,
-                                "worst", "-o",f'temp/recording.wav'])
+                                "worst", "-o",'f','temp/recording.wav'])
     st.write('recording started')
     def Finish():
 
         process.send_signal(signal.SIGQUIT)
         st.write(':red[Recording FINISHED ..... ]',height=30)
-        st.audio('/mount/src/live/temp/recording.wav')
+        st.audio('temp/recording.wav')
         st.text_area(label=' Transcript : ', value= d ,height=200)
     st.sidebar.button("Finish Recording ",on_click=Finish)
 
