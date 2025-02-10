@@ -22,7 +22,7 @@ import datetime
 st.set_page_config(layout="wide")
 model=whisper.load_model('tiny')
 url = st.sidebar.text_input(':blue[Add Live youtube URL here:]')
-def stream_to_url(url, quality='best'):
+def stream_to_url(url, quality='worst'):
     # The "audio_only" quality may be invalid for some streams (check).
     session = Streamlink()
     streams = session.streams(url)
