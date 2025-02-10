@@ -43,7 +43,7 @@ def audiocli():
 
         process.send_signal(signal.SIGQUIT)
         st.write(':red[Recording FINISHED ..... ]',height=30)
-        st.audio('temp/recording.wav')
+        st.audio('/mount/src/live/temp/recording.wav')
         st.text_area(label=' Transcript : ', value= d ,height=200)
     st.sidebar.button("Finish Recording ",on_click=Finish)
 
