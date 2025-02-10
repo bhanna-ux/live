@@ -34,9 +34,10 @@ def stream_to_url(url, quality='best'):
 d=[]
 
 def audiocli():
-    os.makedirs('temp', exist_ok=True)
+    os.makedirs('temp/', exist_ok=True)
     process= subprocess.Popenn( ["streamlink" , url ,
                                 "worst",  "| ffmpeg -i pipe:0 -r 25 -c:v libx264 -preset fast -threads 4","-o",'temp/recording.wav'])
+    st.write('recording started')
     def Finish():
 
         process.send_signal(signal.SIGQUIT)
