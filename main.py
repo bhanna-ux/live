@@ -32,6 +32,19 @@ def stream_to_url(url, quality='best'):
     #def __init__(self):
         #self.ffmpeg_process = None
 d=[]
+
+def audiocli():
+    os.makedirs('temp', exist_ok=True)
+    process= subprocess.Popen( ["streamlink" , url ,"best", "-o",'temp/recording.wav'])
+    def Finish():
+
+        process.send_signal(signal.SIGQUIT)
+        st.write(':red[Recording FINISHED ..... ]',height=30)
+        st.audio('temp/recording.wav')
+        st.text_area(label=' Transcript : ', value= d ,height=200)
+    st.sidebar.button("Finish Recording ",on_click=Finish)
+
+    
 def oneFunction():
     os.makedirs('temp', exist_ok=True)
     stream_url = stream_to_url(url)
@@ -90,6 +103,7 @@ def done():
 if url :
     play_file=st.sidebar.video(url)
 record=st.sidebar.button(":blue[Record Audio and transcribe  ]" ,use_container_width=True)
+record1=st.sidebar.button(":blue[Record Audio and transcribe CLI   ]" ,use_container_width=True)
 transcribe=st.sidebar.button(":blue[ live  Transcribe  ]" ,use_container_width=True)
 #stop=st.sidebar.button(":blue[Stop  ]" ,use_container_width=True)
 if st.sidebar.button("Play Recorded Audio"):
@@ -107,7 +121,8 @@ if record :
     oneFunction()
     #done
     #recorder.start_recording(url)
-
+if record1 :
+    audiocli()
 
         #oneFunction.stop(fmpeg_process)
 if transcribe:
