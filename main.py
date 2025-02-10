@@ -37,7 +37,7 @@ d=[]
 def audiocli():
     os.makedirs('temp', exist_ok=True)
     process= subprocess.Popen( ["streamlink" , url ,
-                                "worst", "-o",'f','temp/recording.wav'])
+                                "worst", "-o",'temp/recording.wav'])
     st.write('recording started')
     def Finish():
 
