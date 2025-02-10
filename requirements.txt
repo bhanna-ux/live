@@ -6,4 +6,4 @@ soundfile==0.12.1
 librosa==0.10.0
 
 openai-whisper==20231106 
-torch==2.0.1 
+torch>=2.0.1 
