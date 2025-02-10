@@ -108,7 +108,7 @@ transcribe=st.sidebar.button(":blue[ live  Transcribe  ]" ,use_container_width=T
 #stop=st.sidebar.button(":blue[Stop  ]" ,use_container_width=True)
 if st.sidebar.button("Play Recorded Audio"):
     st.write("Recorded File  " )
-    video_file = open('/kaggle/working/recording.wav', "rb")
+    video_file = open('temp/recording.wav', "rb")
     video_bytes = video_file.read()
     st.audio(video_bytes)
 
