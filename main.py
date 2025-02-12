@@ -20,7 +20,11 @@ import datetime
 
 
 st.set_page_config(layout="wide")
-model=whisper.load_model('large-v3-turbo')
+model=whisper.load_model('tiny')
+audio_value = st.audio_input("Record a voice message")
+
+if audio_value:
+    st.audio(audio_value)
 url = st.sidebar.text_input(':blue[Add Live youtube URL here:]')
 def stream_to_url(url, quality='worst'):
     # The "audio_only" quality may be invalid for some streams (check).
