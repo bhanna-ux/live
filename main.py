@@ -20,7 +20,7 @@ import datetime
 
 
 st.set_page_config(layout="wide")
-model=whisper.load_model('tiny')
+model=whisper.load_model('large-v3-turbo')
 audio_value = st.audio_input("Record a voice message")
 
 if audio_value:
